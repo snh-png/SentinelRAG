@@ -1,0 +1,32 @@
+[project]
+name = "permission-aware-rag"
+version = "0.1.0"
+description = "Permission-aware enterprise RAG capstone"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "cedarpy>=4.7.0",
+    "openai>=1.0.0",
+    "pandas>=2.0.0",
+    "pydantic-ai>=1.0.0",
+    "pyyaml>=6.0.0",
+    "qdrant-client>=1.12.0",
+    "streamlit>=1.40.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0.0"]
+
+[project.scripts]
+parag = "parag.cli:main"
+
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/parag"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
